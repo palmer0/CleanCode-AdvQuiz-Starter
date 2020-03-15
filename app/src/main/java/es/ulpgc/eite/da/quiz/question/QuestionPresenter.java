@@ -1,5 +1,7 @@
 package es.ulpgc.eite.da.quiz.question;
 
+import android.util.Log;
+
 import java.lang.ref.WeakReference;
 
 public class QuestionPresenter implements QuestionContract.Presenter {
@@ -17,29 +19,45 @@ public class QuestionPresenter implements QuestionContract.Presenter {
 
   @Override
   public void onStart() {
+    Log.e(TAG, "onStart()");
 
     // call the model
-    state = model.getQuestionData();
+    state.question = model.getQuestion();
+    state.option1 = model.getOption1();
+    state.option2 = model.getOption2();
+    state.option3 = model.getOption3();
+
+    //state = model.getQuestionData();
 
     disableNextButton();
     view.get().resetReply();
   }
 
-  private void disableNextButton() {
-    state.optionEnabled=true;
-    state.cheatEnabled=true;
-    state.nextEnabled=false;
-
-  }
-
-  private void enableNextButton() {
-    state.optionEnabled=false;
-    state.nextEnabled=true;
-  }
 
   @Override
   public void onRestart() {
-    //TODO: falta implementacion
+    Log.e(TAG, "onRestart()");
+
+    // update the model
+    model.setQuizIndex(state.quizIndex);
+  }
+
+
+  @Override
+  public void onResume() {
+    Log.e(TAG, "onResume()");
+
+    // use passed state if is necessary
+    QuestionState savedState = router.getDataFromPreviousScreen();
+    if (savedState != null) {
+
+      // update view and model state
+      state = savedState;
+    }
+
+    // update the view
+    view.get().displayQuestion(state);
+
   }
 
   @Override
@@ -71,21 +89,16 @@ public class QuestionPresenter implements QuestionContract.Presenter {
   }
 
 
-  @Override
-  public void onResume() {
-    // Log.e(TAG, "onResume()");
+  private void disableNextButton() {
+    state.optionEnabled=true;
+    state.cheatEnabled=true;
+    state.nextEnabled=false;
 
-    // use passed state if is necessary
-    QuestionState savedState = router.getDataFromPreviousScreen();
-    if (savedState != null) {
+  }
 
-      // update view and model state
-      state = savedState;
-    }
-
-    // update the view
-    view.get().displayQuestion(state);
-
+  private void enableNextButton() {
+    state.optionEnabled=false;
+    state.nextEnabled=true;
   }
 
   @Override

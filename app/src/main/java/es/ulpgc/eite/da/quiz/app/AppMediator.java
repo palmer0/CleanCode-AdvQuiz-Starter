@@ -6,6 +6,9 @@ import es.ulpgc.eite.da.quiz.question.QuestionState;
 
 public class AppMediator extends Application {
 
+  private QuestionState questionState= new QuestionState();
+
+  /*
   private QuestionState questionState;
 
   @Override
@@ -14,6 +17,7 @@ public class AppMediator extends Application {
 
     questionState = new QuestionState();
   }
+  */
 
   public QuestionState getQuestionState() {
     return questionState;
