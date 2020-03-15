@@ -27,6 +27,9 @@ public class QuestionPresenter implements QuestionContract.Presenter {
     state.option2 = model.getOption2();
     state.option3 = model.getOption3();
 
+    state.optionClicked = false;
+    state.option = 0;
+
     disableNextButton();
     view.get().resetReply();
   }
@@ -38,6 +41,13 @@ public class QuestionPresenter implements QuestionContract.Presenter {
 
     // update the model
     model.setQuizIndex(state.quizIndex);
+
+    if(state.optionClicked){
+      view.get().updateReply(model.isCorrectOption(state.option));
+
+    } else {
+      view.get().resetReply();
+    }
   }
 
 
@@ -60,6 +70,10 @@ public class QuestionPresenter implements QuestionContract.Presenter {
 
   @Override
   public void onOptionButtonClicked(int option) {
+    Log.e(TAG, "onOptionButtonClicked()");
+
+    state.optionClicked=true;
+    state.option=option;
 
     enableNextButton();
 
@@ -76,16 +90,19 @@ public class QuestionPresenter implements QuestionContract.Presenter {
 
   @Override
   public void onNextButtonClicked() {
+    Log.e(TAG, "onNextButtonClicked()");
+
     //TODO: falta implementacion
 
   }
 
   @Override
   public void onCheatButtonClicked() {
+    Log.e(TAG, "onCheatButtonClicked()");
+
     //TODO: falta implementacion
 
   }
-
 
   private void disableNextButton() {
     state.optionEnabled=true;
