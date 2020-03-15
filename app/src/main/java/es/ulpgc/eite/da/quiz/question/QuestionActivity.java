@@ -78,18 +78,17 @@ public class QuestionActivity
 
 
   public void onNextButtonClicked(View view) {
-
+    //TODO: falta implementacion
   }
 
   public void onCheatButtonClicked(View view) {
-
+    //TODO: falta implementacion
   }
 
   public void onOptionButtonClicked(View view) {
     //Log.e(TAG, "onOptionButtonClicked()");
 
     int option = Integer.valueOf((String) view.getTag());
-    //Log.e(TAG, "option: "+option);
     presenter.onOptionButtonClicked(option);
   }
 
