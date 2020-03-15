@@ -1,4 +1,4 @@
-package es.ulpgc.eite.da.quiz;
+package es.ulpgc.eite.da.quiz.app;
 
 import android.app.Application;
 

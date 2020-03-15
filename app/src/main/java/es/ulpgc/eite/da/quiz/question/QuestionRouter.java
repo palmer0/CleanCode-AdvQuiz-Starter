@@ -3,7 +3,7 @@ package es.ulpgc.eite.da.quiz.question;
 import android.content.Context;
 import android.content.Intent;
 
-import es.ulpgc.eite.da.quiz.AppMediator;
+import es.ulpgc.eite.da.quiz.app.AppMediator;
 
 public class QuestionRouter implements QuestionContract.Router {
 
