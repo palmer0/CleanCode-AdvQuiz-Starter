@@ -34,7 +34,7 @@ public class QuestionPresenter implements QuestionContract.Presenter {
 
   private void enableNextButton() {
     state.optionEnabled=false;
-    state.cheatEnabled=false;
+    //state.cheatEnabled=false;
     state.nextEnabled=true;
   }
 
@@ -46,7 +46,17 @@ public class QuestionPresenter implements QuestionContract.Presenter {
   @Override
   public void onOptionButtonClicked(int option) {
 
-    view.get().updateReply(model.isCorrectOption(option));
+    enableNextButton();
+
+    boolean isCorrect = model.isCorrectOption(option);
+    if(isCorrect) {
+      state.cheatEnabled=false;
+    } else {
+      state.cheatEnabled=true;
+    }
+
+    view.get().updateReply(isCorrect);
+    onResume();
   }
 
 
