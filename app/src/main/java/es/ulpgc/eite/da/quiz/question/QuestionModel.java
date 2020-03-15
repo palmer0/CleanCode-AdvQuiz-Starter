@@ -46,4 +46,17 @@ public class QuestionModel implements QuestionContract.Model {
   public void setQuizIndex(int index) {
     quizIndex=index;
   }
+
+  @Override
+  public void updateQuizIndex() {
+    quizIndex=quizIndex+5;
+  }
+
+  @Override
+  public String getAnswer() {
+    int index= Integer.valueOf(quizArray[quizIndex+4]);
+    return quizArray[quizIndex+index];
+  }
+
+
 }

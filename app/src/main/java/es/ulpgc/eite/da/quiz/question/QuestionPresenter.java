@@ -4,6 +4,8 @@ import android.util.Log;
 
 import java.lang.ref.WeakReference;
 
+import es.ulpgc.eite.da.quiz.app.CheatToQuestionState;
+
 public class QuestionPresenter implements QuestionContract.Presenter {
 
   public static String TAG = QuestionPresenter.class.getSimpleName();
@@ -27,9 +29,12 @@ public class QuestionPresenter implements QuestionContract.Presenter {
     state.option2 = model.getOption2();
     state.option3 = model.getOption3();
 
+    // reset state to tests
+    state.answerCheated=false;
     state.optionClicked = false;
     state.option = 0;
 
+    // update the view
     disableNextButton();
     view.get().resetReply();
   }
@@ -56,16 +61,20 @@ public class QuestionPresenter implements QuestionContract.Presenter {
     Log.e(TAG, "onResume()");
 
     // use passed state if is necessary
-    QuestionState savedState = router.getDataFromPreviousScreen();
+    CheatToQuestionState savedState = router.getStateFromCheatScreen();
     if (savedState != null) {
 
-      // update view and model state
-      state = savedState;
+      //TODO: falta implementacion
     }
 
     // update the view
     view.get().displayQuestion(state);
+  }
 
+
+  @Override
+  public void onDestroy() {
+    Log.e(TAG, "onDestroy()");
   }
 
   @Override
@@ -93,7 +102,6 @@ public class QuestionPresenter implements QuestionContract.Presenter {
     Log.e(TAG, "onNextButtonClicked()");
 
     //TODO: falta implementacion
-
   }
 
   @Override
@@ -101,8 +109,8 @@ public class QuestionPresenter implements QuestionContract.Presenter {
     Log.e(TAG, "onCheatButtonClicked()");
 
     //TODO: falta implementacion
-
   }
+
 
   private void disableNextButton() {
     state.optionEnabled=true;

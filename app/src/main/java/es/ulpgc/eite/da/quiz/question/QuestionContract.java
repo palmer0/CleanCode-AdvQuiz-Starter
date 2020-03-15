@@ -2,6 +2,9 @@ package es.ulpgc.eite.da.quiz.question;
 
 import java.lang.ref.WeakReference;
 
+import es.ulpgc.eite.da.quiz.app.CheatToQuestionState;
+import es.ulpgc.eite.da.quiz.app.QuestionToCheatState;
+
 public interface QuestionContract {
 
   interface View {
@@ -23,6 +26,7 @@ public interface QuestionContract {
     void onOptionButtonClicked(int option);
     void onNextButtonClicked();
     void onCheatButtonClicked();
+    void onDestroy();
   }
 
   interface Model {
@@ -32,11 +36,13 @@ public interface QuestionContract {
     String getOption3();
     boolean isCorrectOption(int option);
     void setQuizIndex(int index);
+    String getAnswer();
+    void updateQuizIndex();
   }
 
   interface Router {
-    void navigateToNextScreen();
-    void passDataToNextScreen(QuestionState state);
-    QuestionState getDataFromPreviousScreen();
+    void navigateToCheatScreen();
+    void passStateToCheatScreen(QuestionToCheatState state);
+    CheatToQuestionState getStateFromCheatScreen();
   }
 }

@@ -15,4 +15,6 @@ public class QuestionViewModel {
 
   public boolean optionClicked;
   public int option;
+
+  public boolean answerCheated;
 }

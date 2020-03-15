@@ -4,6 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 
 import es.ulpgc.eite.da.quiz.app.AppMediator;
+import es.ulpgc.eite.da.quiz.app.CheatToQuestionState;
+import es.ulpgc.eite.da.quiz.app.QuestionToCheatState;
+import es.ulpgc.eite.da.quiz.cheat.CheatActivity;
 
 public class QuestionRouter implements QuestionContract.Router {
 
@@ -16,21 +19,22 @@ public class QuestionRouter implements QuestionContract.Router {
   }
 
   @Override
-  public void navigateToNextScreen() {
+  public void navigateToCheatScreen() {
+
     Context context = mediator.getApplicationContext();
-    Intent intent = new Intent(context, QuestionActivity.class);
+    Intent intent = new Intent(context, CheatActivity.class);
+    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
     context.startActivity(intent);
   }
 
   @Override
-  public void passDataToNextScreen(QuestionState state) {
-    //mediator.setQuestionState(state);
+  public void passStateToCheatScreen(QuestionToCheatState state) {
+    mediator.setQuestionToCheatState(state);
   }
 
   @Override
-  public QuestionState getDataFromPreviousScreen() {
-    //QuestionState state = mediator.getQuestionState();
-    //return state;
-    return null;
+  public CheatToQuestionState getStateFromCheatScreen() {
+    CheatToQuestionState state = mediator.getCheatToQuestionState();
+    return state;
   }
 }

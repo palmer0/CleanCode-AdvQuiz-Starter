@@ -20,6 +20,8 @@ public class QuestionActivity
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_question);
 
+    getSupportActionBar().setTitle(R.string.question_title);
+
     ((TextView) findViewById(R.id.nextButton)).setText(R.string.next_button);
     ((TextView) findViewById(R.id.cheatButton)).setText(R.string.cheat_button);
 
@@ -38,15 +40,22 @@ public class QuestionActivity
   protected void onResume() {
     super.onResume();
 
-    // load the data
+    // load the answer
     presenter.onResume();
+  }
+
+  @Override
+  protected void onDestroy() {
+    super.onDestroy();
+
+    presenter.onDestroy();
   }
 
   @Override
   public void displayQuestion(QuestionViewModel viewModel) {
     //Log.e(TAG, "displayQuestion()");
 
-    // deal with the data
+    // deal with the answer
     ((TextView) findViewById(R.id.qestionTextView)).setText(viewModel.question);
     ((TextView) findViewById(R.id.option1Button)).setText(viewModel.option1);
     ((TextView) findViewById(R.id.option2Button)).setText(viewModel.option2);
@@ -86,7 +95,6 @@ public class QuestionActivity
   }
 
   public void onOptionButtonClicked(View view) {
-    //Log.e(TAG, "onOptionButtonClicked()");
 
     int option = Integer.valueOf((String) view.getTag());
     presenter.onOptionButtonClicked(option);

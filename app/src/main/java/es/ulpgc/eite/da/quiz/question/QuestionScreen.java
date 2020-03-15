@@ -4,8 +4,8 @@ import androidx.fragment.app.FragmentActivity;
 
 import java.lang.ref.WeakReference;
 
-import es.ulpgc.eite.da.quiz.app.AppMediator;
 import es.ulpgc.eite.da.quiz.R;
+import es.ulpgc.eite.da.quiz.app.AppMediator;
 
 public class QuestionScreen {
 
