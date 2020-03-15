@@ -78,11 +78,11 @@ public class QuestionActivity
 
 
   public void onNextButtonClicked(View view) {
-    //TODO: falta implementacion
+    presenter.onNextButtonClicked();
   }
 
   public void onCheatButtonClicked(View view) {
-    //TODO: falta implementacion
+    presenter.onCheatButtonClicked();
   }
 
   public void onOptionButtonClicked(View view) {

@@ -21,6 +21,8 @@ public interface QuestionContract {
     void onStart();
     void onRestart();
     void onOptionButtonClicked(int option);
+    void onNextButtonClicked();
+    void onCheatButtonClicked();
   }
 
   interface Model {

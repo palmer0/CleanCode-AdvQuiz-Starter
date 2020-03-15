@@ -39,7 +39,7 @@ public class QuestionPresenter implements QuestionContract.Presenter {
 
   @Override
   public void onRestart() {
-
+    //TODO: falta implementacion
   }
 
   @Override
@@ -56,6 +56,18 @@ public class QuestionPresenter implements QuestionContract.Presenter {
 
     view.get().updateReply(isCorrect);
     onResume();
+  }
+
+  @Override
+  public void onNextButtonClicked() {
+    //TODO: falta implementacion
+
+  }
+
+  @Override
+  public void onCheatButtonClicked() {
+    //TODO: falta implementacion
+
   }
 
 
