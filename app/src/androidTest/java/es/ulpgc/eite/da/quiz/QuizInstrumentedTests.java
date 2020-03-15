@@ -60,12 +60,11 @@ public class QuizInstrumentedTests {
   @Test
   public void firstQuestionWithRotation() {
 
-    //GIVEN 
-    //encontrándonos en pantalla Question
-    //después de cargar pregunta del cuestionario
-    //mostraremos botones Option y Cheat activados
-    //mostraremos botón Next desactivado
-
+    // GIVEN 
+    // encontrándonos en pantalla Question
+    // después de cargar pregunta del cuestionario
+    // mostraremos botones Option y Cheat activados
+    // mostraremos botón Next desactivado
     (onView(withId(R.id.qestionTextView))).check(matches(withText(quiz[0])));
     (onView(withId(R.id.option1Button))).check(matches(withText(quiz[1])));
     (onView(withId(R.id.option2Button))).check(matches(withText(quiz[2])));
@@ -77,15 +76,15 @@ public class QuizInstrumentedTests {
     (onView(withId(R.id.cheatButton))).check(matches(isEnabled()));
     (onView(withId(R.id.nextButton))).check(matches(not(isEnabled())));
 
-    //WHEN 
-    //al girar pantalla Question
+    // WHEN 
+    // al girar pantalla Question
     rotate();
 
-    //THEN 
-    //visualizaremos pregunta del cuestionario existente
-    //en pantalla Question antes del giro
-    //mostraremos botones Option y Cheat activados
-    //mostraremos botón Next desactivado
+    // THEN 
+    // visualizaremos pregunta del cuestionario existente
+    // en pantalla Question antes del giro
+    // mostraremos botones Option y Cheat activados
+    // mostraremos botón Next desactivado
     (onView(withId(R.id.qestionTextView))).check(matches(withText(quiz[0])));
     (onView(withId(R.id.option1Button))).check(matches(withText(quiz[1])));
     (onView(withId(R.id.option2Button))).check(matches(withText(quiz[2])));
@@ -102,12 +101,11 @@ public class QuizInstrumentedTests {
   @Test
   public void firstQuestionCorrect() {
 
-    //GIVEN 
-    //encontrándonos en pantalla Question
-    //después de cargar pregunta del cuestionario
-    //mostraremos botones Option y Cheat activados
-    //mostraremos botón Next desactivado
-
+    // GIVEN 
+    // encontrándonos en pantalla Question
+    // después de cargar pregunta del cuestionario
+    // mostraremos botones Option y Cheat activados
+    // mostraremos botón Next desactivado
     (onView(withId(R.id.qestionTextView))).check(matches(withText(quiz[0])));
     (onView(withId(R.id.option1Button))).check(matches(withText(quiz[1])));
     (onView(withId(R.id.option2Button))).check(matches(withText(quiz[2])));
@@ -119,15 +117,15 @@ public class QuizInstrumentedTests {
     (onView(withId(R.id.cheatButton))).check(matches(isEnabled()));
     (onView(withId(R.id.nextButton))).check(matches(not(isEnabled())));
 
-    //WHEN 
-    //al pulsar botón Option
+    // WHEN 
+    // al pulsar botón Option
     (onView(withId(R.id.option3Button))).perform(click());
 
-    //THEN 
-    //mostraremos mensaje Correct ya que la respuesta del usuario
-    //corresponde con respuesta correcta
-    //mostraremos botones Option y Cheat desactivados
-    //mostraremos botón Next activado
+    // THEN 
+    // mostraremos mensaje Correct ya que la respuesta del usuario
+    // corresponde con respuesta correcta
+    // mostraremos botones Option y Cheat desactivados
+    // mostraremos botón Next activado
     (onView(withId(R.id.qestionTextView))).check(matches(withText(quiz[0])));
     (onView(withId(R.id.option1Button))).check(matches(withText(quiz[1])));
     (onView(withId(R.id.option2Button))).check(matches(withText(quiz[2])));
@@ -145,12 +143,11 @@ public class QuizInstrumentedTests {
   @Test
   public void firstQuestionIncorrect() {
 
-    //GIVEN 
-    //encontrándonos en pantalla Question
-    //después de cargar pregunta del cuestionario
-    //mostraremos botones Option y Cheat activados
-    //mostraremos botón Next desactivado
-
+    // GIVEN 
+    // encontrándonos en pantalla Question
+    // después de cargar pregunta del cuestionario
+    // mostraremos botones Option y Cheat activados
+    // mostraremos botón Next desactivado
     (onView(withId(R.id.qestionTextView))).check(matches(withText(quiz[0])));
     (onView(withId(R.id.option1Button))).check(matches(withText(quiz[1])));
     (onView(withId(R.id.option2Button))).check(matches(withText(quiz[2])));
@@ -162,15 +159,15 @@ public class QuizInstrumentedTests {
     (onView(withId(R.id.cheatButton))).check(matches(isEnabled()));
     (onView(withId(R.id.nextButton))).check(matches(not(isEnabled())));
 
-    //WHEN 
-    //al pulsar botón Option
+    // WHEN 
+    // al pulsar botón Option
     (onView(withId(R.id.option2Button))).perform(click());
 
-    //THEN 
-    //mostraremos mensaje Incorrect ya que respuesta del usuario
-    //corresponde con respuesta incorrecta
-    //mostraremos botones Next y Cheat desactivados
-    //mostraremos botón Option activado
+    // THEN 
+    // mostraremos mensaje Incorrect ya que respuesta del usuario
+    // corresponde con respuesta incorrecta
+    // mostraremos botones Option desactivado
+    // mostraremos botón Next y Cheat activado
     (onView(withId(R.id.qestionTextView))).check(matches(withText(quiz[0])));
     (onView(withId(R.id.option1Button))).check(matches(withText(quiz[1])));
     (onView(withId(R.id.option2Button))).check(matches(withText(quiz[2])));
@@ -188,12 +185,12 @@ public class QuizInstrumentedTests {
   @Test
   public void firstQuestionCorrectWithRotation() {
     
-    //GIVEN 
-    //encontrándonos en pantalla Question 
-    //después de responder a pregunta del cuestionario
-    //mostraremos mensaje Correct ya que la respuesta del usuario fue correcta
-    //mostraremos botones Option y Cheat desactivados
-    //mostraremos botón Next activado
+    // GIVEN 
+    // encontrándonos en pantalla Question 
+    // después de responder a pregunta del cuestionario
+    // mostraremos mensaje Correct ya que la respuesta del usuario fue correcta
+    // mostraremos botones Option y Cheat desactivados
+    // mostraremos botón Next activado
     (onView(withId(R.id.qestionTextView))).check(matches(withText(quiz[0])));
     (onView(withId(R.id.option1Button))).check(matches(withText(quiz[1])));
     (onView(withId(R.id.option2Button))).check(matches(withText(quiz[2])));
@@ -206,17 +203,17 @@ public class QuizInstrumentedTests {
     (onView(withId(R.id.nextButton))).check(matches(not(isEnabled())));
     (onView(withId(R.id.option3Button))).perform(click());
 
-    //WHEN 
-    //al girar pantalla Question
+    // WHEN 
+    // al girar pantalla Question
     rotate();
 
-    //THEN 
-    //visualizaremos pregunta del cuestionario existente 
-    //en pantalla Question antes del giro
-    //visualizaremos mensaje de Correct o Incorrect 
-    //existente en pantalla Question antes del giro
-    //mostraremos botones Option y Cheat activados
-    //mostraremos botón Next desactivado
+    // THEN 
+    // visualizaremos pregunta del cuestionario existente 
+    // en pantalla Question antes del giro
+    // visualizaremos mensaje de Correct o Incorrect 
+    // existente en pantalla Question antes del giro
+    // mostraremos botones Option y Cheat desactivados
+    // mostraremos botón Next activado
     (onView(withId(R.id.qestionTextView))).check(matches(withText(quiz[0])));
     (onView(withId(R.id.option1Button))).check(matches(withText(quiz[1])));
     (onView(withId(R.id.option2Button))).check(matches(withText(quiz[2])));
@@ -234,12 +231,12 @@ public class QuizInstrumentedTests {
   @Test
   public void firstQuestionIncorrectWithRotation() {
 
-    //GIVEN 
-    //encontrándonos en pantalla Question 
-    //después de responder a pregunta del cuestionario
-    //mostraremos mensaje Incorrect ya que respuesta del usuario fue incorrecta
-    //mostraremos botones Option y Cheat desactivados
-    //mostraremos botón Next activado
+    // GIVEN 
+    // encontrándonos en pantalla Question 
+    // después de responder a pregunta del cuestionario
+    // mostraremos mensaje Incorrect ya que respuesta del usuario fue incorrecta
+    // mostraremos botones Option y Cheat desactivados
+    // mostraremos botón Next activado
     (onView(withId(R.id.qestionTextView))).check(matches(withText(quiz[0])));
     (onView(withId(R.id.option1Button))).check(matches(withText(quiz[1])));
     (onView(withId(R.id.option2Button))).check(matches(withText(quiz[2])));
@@ -252,17 +249,17 @@ public class QuizInstrumentedTests {
     (onView(withId(R.id.nextButton))).check(matches(not(isEnabled())));
     (onView(withId(R.id.option2Button))).perform(click());
 
-    //WHEN 
-    //al girar pantalla Question
+    // WHEN 
+    // al girar pantalla Question
     rotate();
 
-    //THEN 
-    //visualizaremos pregunta del cuestionario existente 
-    //en pantalla Question antes del giro
-    //visualizaremos mensaje de Correct o Incorrect 
-    //existente en pantalla Question antes del giro
-    //mostraremos botones Option y Cheat activados
-    //mostraremos botón Next desactivado
+    // THEN 
+    // visualizaremos pregunta del cuestionario existente 
+    // en pantalla Question antes del giro
+    // visualizaremos mensaje de Correct o Incorrect 
+    // existente en pantalla Question antes del giro
+    // mostraremos botones Option y Cheat activados
+    // mostraremos botón Next desactivado
     (onView(withId(R.id.qestionTextView))).check(matches(withText(quiz[0])));
     (onView(withId(R.id.option1Button))).check(matches(withText(quiz[1])));
     (onView(withId(R.id.option2Button))).check(matches(withText(quiz[2])));
@@ -275,4 +272,90 @@ public class QuizInstrumentedTests {
     (onView(withId(R.id.nextButton))).check(matches(isEnabled()));
 
   }
+
+  @Test
+  public void firstQuestionCorrectWithNextClicked() {
+    
+    // GIVEN 
+    // encontrándonos en pantalla Question 
+    // después de responder a pregunta del cuestionario
+    // mostraremos mensaje Correct ya que la respuesta del usuario fue correcta
+    // mostraremos botones Option y Cheat desactivados
+    // mostraremos botón Next activado
+    (onView(withId(R.id.qestionTextView))).check(matches(withText(quiz[0])));
+    (onView(withId(R.id.option1Button))).check(matches(withText(quiz[1])));
+    (onView(withId(R.id.option2Button))).check(matches(withText(quiz[2])));
+    (onView(withId(R.id.option3Button))).check(matches(withText(quiz[3])));
+    (onView(withId(R.id.replyTextView))).check(matches(withText(empty)));
+    (onView(withId(R.id.option1Button))).check(matches(isEnabled()));
+    (onView(withId(R.id.option2Button))).check(matches(isEnabled()));
+    (onView(withId(R.id.option3Button))).check(matches(isEnabled()));
+    (onView(withId(R.id.cheatButton))).check(matches(isEnabled()));
+    (onView(withId(R.id.nextButton))).check(matches(not(isEnabled())));
+    (onView(withId(R.id.option3Button))).perform(click());
+
+    // WHEN 
+    // al pulsar botón Next
+    (onView(withId(R.id.nextButton))).perform(click());
+
+    // THEN 
+    // mostraremos idéntica pantalla Question con siguiente pregunta  ya cargada
+    // mostraremos botones Option y Cheat activados
+    // mostraremos botón Next desactivado
+    (onView(withId(R.id.qestionTextView))).check(matches(withText(quiz[5])));
+    (onView(withId(R.id.option1Button))).check(matches(withText(quiz[6])));
+    (onView(withId(R.id.option2Button))).check(matches(withText(quiz[7])));
+    (onView(withId(R.id.option3Button))).check(matches(withText(quiz[8])));
+    (onView(withId(R.id.replyTextView))).check(matches(withText(empty)));
+    (onView(withId(R.id.option1Button))).check(matches(isEnabled()));
+    (onView(withId(R.id.option2Button))).check(matches(isEnabled()));
+    (onView(withId(R.id.option3Button))).check(matches(isEnabled()));
+    (onView(withId(R.id.cheatButton))).check(matches(isEnabled()));
+    (onView(withId(R.id.nextButton))).check(matches(not(isEnabled())));
+  }
+
+
+  @Test
+  public void firstQuestionCorrectWithNextClickedAndRotation() {
+
+    // GIVEN 
+    // encontrándonos en pantalla Question
+    // después de responder a pregunta del cuestionario
+    // mostraremos mensaje Correct ya que la respuesta del usuario fue correcta
+    // mostraremos botones Option y Cheat desactivados
+    // mostraremos botón Next activado
+    (onView(withId(R.id.qestionTextView))).check(matches(withText(quiz[0])));
+    (onView(withId(R.id.option1Button))).check(matches(withText(quiz[1])));
+    (onView(withId(R.id.option2Button))).check(matches(withText(quiz[2])));
+    (onView(withId(R.id.option3Button))).check(matches(withText(quiz[3])));
+    (onView(withId(R.id.replyTextView))).check(matches(withText(empty)));
+    (onView(withId(R.id.option1Button))).check(matches(isEnabled()));
+    (onView(withId(R.id.option2Button))).check(matches(isEnabled()));
+    (onView(withId(R.id.option3Button))).check(matches(isEnabled()));
+    (onView(withId(R.id.cheatButton))).check(matches(isEnabled()));
+    (onView(withId(R.id.nextButton))).check(matches(not(isEnabled())));
+    (onView(withId(R.id.option3Button))).perform(click());
+
+    // WHEN 
+    // al pulsar botón Next y girar la pantalla
+    (onView(withId(R.id.nextButton))).perform(click());
+    rotate();
+
+    // THEN 
+    // mostraremos idéntica pantalla Question con siguiente pregunta  ya cargada
+    // mostraremos botones Option y Cheat activados
+    // mostraremos botón Next desactivado
+    (onView(withId(R.id.qestionTextView))).check(matches(withText(quiz[5])));
+    (onView(withId(R.id.option1Button))).check(matches(withText(quiz[6])));
+    (onView(withId(R.id.option2Button))).check(matches(withText(quiz[7])));
+    (onView(withId(R.id.option3Button))).check(matches(withText(quiz[8])));
+    (onView(withId(R.id.replyTextView))).check(matches(withText(empty)));
+    (onView(withId(R.id.option1Button))).check(matches(isEnabled()));
+    (onView(withId(R.id.option2Button))).check(matches(isEnabled()));
+    (onView(withId(R.id.option3Button))).check(matches(isEnabled()));
+    (onView(withId(R.id.cheatButton))).check(matches(isEnabled()));
+    (onView(withId(R.id.nextButton))).check(matches(not(isEnabled())));
+  }
+
+
 }
