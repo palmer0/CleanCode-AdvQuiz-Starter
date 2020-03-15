@@ -27,8 +27,6 @@ public class QuestionPresenter implements QuestionContract.Presenter {
     state.option2 = model.getOption2();
     state.option3 = model.getOption3();
 
-    //state = model.getQuestionData();
-
     disableNextButton();
     view.get().resetReply();
   }

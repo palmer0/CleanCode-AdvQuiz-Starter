@@ -27,14 +27,9 @@ public interface QuestionContract {
 
   interface Model {
     String getQuestion();
-
     String getOption1();
-
     String getOption2();
-
     String getOption3();
-
-    //QuestionState getQuestionData();
     boolean isCorrectOption(int option);
     void setQuizIndex(int index);
   }

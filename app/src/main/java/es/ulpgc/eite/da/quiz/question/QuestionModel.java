@@ -11,7 +11,6 @@ public class QuestionModel implements QuestionContract.Model {
     this.quizArray=quizArray;
   }
 
-
   @Override
   public String getQuestion() {
     return quizArray[quizIndex];
@@ -31,22 +30,6 @@ public class QuestionModel implements QuestionContract.Model {
   public String getOption3() {
     return quizArray[quizIndex+3];
   }
-
-  /*
-  @Override
-  public QuestionState getQuestionData() {
-    // Log.e(TAG, "getQuestionData()");
-
-    QuestionState data = new QuestionState();
-    data.question=quizArray[quizIndex];
-    data.option1=quizArray[quizIndex+1];
-    data.option2=quizArray[quizIndex+2];
-    data.option3=quizArray[quizIndex+3];
-    data.quizIndex = quizIndex;
-
-    return data;
-  }
-  */
 
   @Override
   public boolean isCorrectOption(int option) {
