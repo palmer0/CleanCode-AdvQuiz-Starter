@@ -23,8 +23,6 @@ import static org.hamcrest.Matchers.not;
 @RunWith(AndroidJUnit4.class)
 public class QuizInstrumentedTests {
 
-
-
   @Rule
   public ActivityTestRule<QuestionActivity> activityTestRule =
       new ActivityTestRule(QuestionActivity.class );

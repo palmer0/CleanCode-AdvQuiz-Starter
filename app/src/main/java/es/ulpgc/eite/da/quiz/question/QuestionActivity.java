@@ -51,7 +51,6 @@ public class QuestionActivity
     ((TextView) findViewById(R.id.option1Button)).setText(viewModel.option1);
     ((TextView) findViewById(R.id.option2Button)).setText(viewModel.option2);
     ((TextView) findViewById(R.id.option3Button)).setText(viewModel.option3);
-    //((TextView) findViewById(R.id.replyTextView)).setText(viewModel.reply);
 
     findViewById(R.id.option1Button).setEnabled(viewModel.optionEnabled);
     findViewById(R.id.option2Button).setEnabled(viewModel.optionEnabled);
