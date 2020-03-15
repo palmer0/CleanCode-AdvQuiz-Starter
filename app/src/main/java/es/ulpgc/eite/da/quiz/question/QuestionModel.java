@@ -16,14 +16,14 @@ public class QuestionModel implements QuestionContract.Model {
   public QuestionState getQuestionData() {
     // Log.e(TAG, "getQuestionData()");
 
-    QuestionState state = new QuestionState();
-    state.question=quizArray[quizIndex];
-    state.option1=quizArray[quizIndex+1];
-    state.option2=quizArray[quizIndex+2];
-    state.option3=quizArray[quizIndex+3];
-    state.quizIndex = quizIndex;
+    QuestionState data = new QuestionState();
+    data.question=quizArray[quizIndex];
+    data.option1=quizArray[quizIndex+1];
+    data.option2=quizArray[quizIndex+2];
+    data.option3=quizArray[quizIndex+3];
+    data.quizIndex = quizIndex;
 
-    return state;
+    return data;
   }
 
   @Override
