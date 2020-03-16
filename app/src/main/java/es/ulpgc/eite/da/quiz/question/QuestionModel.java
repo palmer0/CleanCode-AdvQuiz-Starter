@@ -48,6 +48,15 @@ public class QuestionModel implements QuestionContract.Model {
   }
 
   @Override
+  public boolean hasQuizFinished(){
+    if(quizIndex+4 < quizArray.length-1) {
+      return false;
+    }
+
+    return true;
+  }
+
+  @Override
   public void updateQuizIndex() {
     quizIndex=quizIndex+5;
   }

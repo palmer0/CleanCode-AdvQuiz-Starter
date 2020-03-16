@@ -111,7 +111,10 @@ public class QuestionPresenter implements QuestionContract.Presenter {
 
   private void enableNextButton() {
     state.optionEnabled=false;
-    state.nextEnabled=true;
+
+    if(!model.hasQuizFinished()) {
+      state.nextEnabled=true;
+    }
   }
 
   @Override
