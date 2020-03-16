@@ -16,12 +16,15 @@ public class CheatRouter implements CheatContract.Router {
 
   @Override
   public void passStateToQuestionScreen(CheatToQuestionState state) {
-    mediator.setCheatToQuestionState(state);
+
+    //TODO: falta implementacion
   }
 
   @Override
   public QuestionToCheatState getStateFromQuestionScreen() {
-    QuestionToCheatState state = mediator.getQuestionToCheatState();
-    return state;
+
+    //TODO: falta implementacion
+
+    return null;
   }
 }

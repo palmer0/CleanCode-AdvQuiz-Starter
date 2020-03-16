@@ -29,12 +29,16 @@ public class QuestionRouter implements QuestionContract.Router {
 
   @Override
   public void passStateToCheatScreen(QuestionToCheatState state) {
-    mediator.setQuestionToCheatState(state);
+
+    //TODO: falta implementacion
+
   }
 
   @Override
   public CheatToQuestionState getStateFromCheatScreen() {
-    CheatToQuestionState state = mediator.getCheatToQuestionState();
-    return state;
+
+    //TODO: falta implementacion
+
+    return null;
   }
 }
