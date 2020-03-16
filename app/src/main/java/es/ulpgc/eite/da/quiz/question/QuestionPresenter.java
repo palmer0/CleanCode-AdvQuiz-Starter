@@ -59,7 +59,7 @@ public class QuestionPresenter implements QuestionContract.Presenter {
     CheatToQuestionState savedState = router.getStateFromCheatScreen();
     if (savedState != null) {
 
-      // update the state
+      // fetch the model
     }
 
     // update the view
