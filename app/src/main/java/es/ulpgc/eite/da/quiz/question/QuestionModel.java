@@ -43,6 +43,12 @@ public class QuestionModel implements QuestionContract.Model {
   }
 
   @Override
+  public int getQuizIndex() {
+    return quizIndex;
+  }
+
+
+  @Override
   public void setQuizIndex(int index) {
     quizIndex=index;
   }

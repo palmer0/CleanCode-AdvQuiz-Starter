@@ -50,6 +50,8 @@ public class CheatPresenter implements CheatContract.Presenter {
     QuestionToCheatState savedState = router.getStateFromQuestionScreen();
     if (savedState != null) {
 
+      // fetch the model
+
       // update the state
 
     }

@@ -184,9 +184,10 @@ public class QuizInstrumentedTests {
   }
 
 
+
   @Test
   public void question1CorrectWithRotation() {
-
+    
     //GIVEN 
     //encontrándonos en pantalla Question 
     //después de responder a pregunta del cuestionario
@@ -275,9 +276,10 @@ public class QuizInstrumentedTests {
 
   }
 
+
   @Test
   public void question1CorrectWithNextClicked() {
-
+    
     //GIVEN 
     //encontrándonos en pantalla Question 
     //después de responder a pregunta del cuestionario

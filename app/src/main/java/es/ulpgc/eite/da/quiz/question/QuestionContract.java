@@ -39,6 +39,7 @@ public interface QuestionContract {
     String getAnswer();
     boolean hasQuizFinished();
     void updateQuizIndex();
+    int getQuizIndex();
   }
 
   interface Router {
