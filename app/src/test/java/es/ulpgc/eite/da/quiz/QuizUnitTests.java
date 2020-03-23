@@ -33,18 +33,18 @@ public class QuizUnitTests {
   String empty_answer, sure;
 
   @Before
-  public void setup(){
+  public void setUp(){
 
     controller1 = Robolectric.buildActivity(QuestionActivity.class);
     controller2 = Robolectric.buildActivity(CheatActivity.class);
 
-    controller1.create().resume().get();
-    resources1();
+    controller1.create().resume().visible().get();
+    updateResources1();
 
   }
 
 
-  private void resources1() {
+  private void updateResources1() {
 
     QuestionActivity activity1 = controller1.get();
 
@@ -64,7 +64,7 @@ public class QuizUnitTests {
   }
 
 
-  private void resources2() {
+  private void updateResources2() {
 
     CheatActivity activity2 = controller2.get();
 
@@ -91,7 +91,6 @@ public class QuizUnitTests {
 
     controller1 = Robolectric.buildActivity(QuestionActivity.class)
         .create(bundle)
-        .start()
         .restoreInstanceState(bundle)
         .resume()
         .visible();
@@ -110,7 +109,6 @@ public class QuizUnitTests {
 
     controller2 = Robolectric.buildActivity(CheatActivity.class)
         .create(bundle)
-        .start()
         .restoreInstanceState(bundle)
         .resume()
         .visible();
@@ -180,7 +178,7 @@ public class QuizUnitTests {
     //  del usuario corresponde con respuesta correcta
     //  mostraremos botones Option y Cheat desactivados
     //  mostraremos botón Next activado
-    resources1();
+    updateResources1();
     assertThat(question.getText().toString(), equalTo(quiz[0]));
     assertThat(reply.getText().toString(), equalTo(correct));
     assertThat(option1.isEnabled(), equalTo(false));
@@ -292,7 +290,7 @@ public class QuizUnitTests {
     //  mostraremos pantalla Question con siguiente pregunta  ya cargada
     //  mostraremos botones Option y Cheat activados
     //  mostraremos botón Next desactivado
-    resources1();
+    updateResources1();
     assertThat(question.getText().toString(), equalTo(quiz[5]));
     assertThat(reply.getText().toString(), equalTo(empty_reply));
     assertThat(option1.isEnabled(), equalTo(true));
@@ -359,22 +357,13 @@ public class QuizUnitTests {
     //  WHEN 
     //  al pulsar botón Cheat
     cheat.performClick();
-    controller2.create().resume().get();
+    controller2.create().resume().visible().get();
 
     //  THEN 
     //  visualizaremos pantalla Cheat donde se nos pedirá confirmación
     //  antes de mostrar respuesta correcta
     //  mostraremos botones Yes y NO activados
-    resources2();
-    /*
-    CheatActivity activity2 = controller2.create().resume().get();
-    TextView warning = activity2.findViewById(R.id.warningTextView);
-    TextView answer = activity2.findViewById(R.id.answerTextView);
-    Button yes = activity2.findViewById(R.id.yesButton);
-    Button no = activity2.findViewById(R.id.noButton);
-    String sure =activity2.getResources().getString(R.string.warning_message);
-    String empty_answer=activity2.getResources().getString(R.string.empty_answer);
-    */
+    updateResources2();
     assertThat(warning.getText().toString(), equalTo(sure));
     assertThat(answer.getText().toString(), equalTo(empty_answer));
     assertThat(yes.isEnabled(), equalTo(true));
@@ -402,7 +391,7 @@ public class QuizUnitTests {
     //  WHEN 
     //  al pulsar botón Cheat y girar la pantalla
     cheat.performClick();
-    controller2.create().resume().get();
+    controller2.create().resume().visible().get();
     rotate1();
     rotate2();
 
@@ -410,17 +399,8 @@ public class QuizUnitTests {
     //  visualizaremos pantalla Cheat donde se nos pedirá confirmación
     //  antes de mostrar respuesta correcta
     //  mostraremos botones Yes y NO activados
-    resources1();
-    resources2();
-    /*
-    CheatActivity activity2 = controller2.get();
-    TextView warning = activity2.findViewById(R.id.warningTextView);
-    TextView answer = activity2.findViewById(R.id.answerTextView);
-    Button yes = activity2.findViewById(R.id.yesButton);
-    Button no = activity2.findViewById(R.id.noButton);
-    String sure =activity2.getResources().getString(R.string.warning_message);
-    String empty_answer=activity2.getResources().getString(R.string.empty_answer);
-    */
+    updateResources1();
+    updateResources2();
     assertThat(warning.getText().toString(), equalTo(sure));
     assertThat(answer.getText().toString(), equalTo(empty_answer));
     assertThat(yes.isEnabled(), equalTo(true));
@@ -448,22 +428,13 @@ public class QuizUnitTests {
     //  WHEN 
     //  al pulsar botón Cheat
     cheat.performClick();
-    controller2.create().resume().get();
+    controller2.create().resume().visible().get();
 
     //  THEN 
     //  visualizaremos pantalla Cheat donde se nos pedirá confirmación
     //  antes de mostrar respuesta correcta
     //  mostraremos botones Yes y NO activados
-    resources2();
-    /*
-    CheatActivity activity2 = controller2.create().resume().get();
-    TextView warning = activity2.findViewById(R.id.warningTextView);
-    TextView answer = activity2.findViewById(R.id.answerTextView);
-    Button yes = activity2.findViewById(R.id.yesButton);
-    Button no = activity2.findViewById(R.id.noButton);
-    String sure =activity2.getResources().getString(R.string.warning_message);
-    String empty_answer=activity2.getResources().getString(R.string.empty_answer);
-    */
+    updateResources2();
     assertThat(warning.getText().toString(), equalTo(sure));
     assertThat(answer.getText().toString(), equalTo(empty_answer));
     assertThat(yes.isEnabled(), equalTo(true));
@@ -480,17 +451,8 @@ public class QuizUnitTests {
     //  a  pregunta del cuestionario en pantalla Question
     //  mostraremos botones Yes y NO activados
     cheat.performClick();
-    controller2.create().resume().get();
-    resources2();
-    /*
-    CheatActivity activity2 = controller2.create().resume().get();
-    TextView warning = activity2.findViewById(R.id.warningTextView);
-    TextView answer = activity2.findViewById(R.id.answerTextView);
-    Button yes = activity2.findViewById(R.id.yesButton);
-    Button no = activity2.findViewById(R.id.noButton);
-    String sure =activity2.getResources().getString(R.string.warning_message);
-    String empty_answer=activity2.getResources().getString(R.string.empty_answer);
-    */
+    controller2.create().resume().visible().get();
+    updateResources2();
     assertThat(warning.getText().toString(), equalTo(sure));
     assertThat(answer.getText().toString(), equalTo(empty_answer));
     assertThat(yes.isEnabled(), equalTo(true));
@@ -525,17 +487,8 @@ public class QuizUnitTests {
     //  a  pregunta del cuestionario en pantalla Question
     //  mostraremos botones Yes y NO activados
     cheat.performClick();
-    controller2.create().resume().get();
-    resources2();
-    /*
-    CheatActivity activity2 = controller2.create().resume().get();
-    TextView warning = activity2.findViewById(R.id.warningTextView);
-    TextView answer = activity2.findViewById(R.id.answerTextView);
-    Button yes = activity2.findViewById(R.id.yesButton);
-    Button no = activity2.findViewById(R.id.noButton);
-    String sure =activity2.getResources().getString(R.string.warning_message);
-    String empty_answer=activity2.getResources().getString(R.string.empty_answer);
-    */
+    controller2.create().resume().visible().get();
+    updateResources2();
     assertThat(warning.getText().toString(), equalTo(sure));
     assertThat(answer.getText().toString(), equalTo(empty_answer));
     assertThat(yes.isEnabled(), equalTo(true));
@@ -552,7 +505,7 @@ public class QuizUnitTests {
     //  antes de iniciar pantalla Cheat
     //  mostraremos botones Option y Cheat activados
     //  mostraremos botón Next desactivado
-    resources1();
+    updateResources1();
     assertThat(question.getText().toString(), equalTo(quiz[0]));
     assertThat(reply.getText().toString(), equalTo(empty_reply));
     assertThat(option1.isEnabled(), equalTo(true));
@@ -573,17 +526,8 @@ public class QuizUnitTests {
     //  mostraremos botones Yes y NO activados
     option2.performClick();
     cheat.performClick();
-    controller2.create().resume().get();
-    resources2();
-    /*
-    CheatActivity activity2 = controller2.create().resume().get();
-    TextView warning = activity2.findViewById(R.id.warningTextView);
-    TextView answer = activity2.findViewById(R.id.answerTextView);
-    Button yes = activity2.findViewById(R.id.yesButton);
-    Button no = activity2.findViewById(R.id.noButton);
-    String sure =activity2.getResources().getString(R.string.warning_message);
-    String empty_answer=activity2.getResources().getString(R.string.empty_answer);
-    */
+    controller2.create().resume().visible().get();
+    updateResources2();
     assertThat(warning.getText().toString(), equalTo(sure));
     assertThat(answer.getText().toString(), equalTo(empty_answer));
     assertThat(yes.isEnabled(), equalTo(true));
@@ -619,17 +563,8 @@ public class QuizUnitTests {
     //  mostraremos botones Yes y NO activados
     option2.performClick();
     cheat.performClick();
-    controller2.create().resume().get();
-    resources2();
-    /*
-    CheatActivity activity2 = controller2.create().resume().get();
-    TextView warning = activity2.findViewById(R.id.warningTextView);
-    TextView answer = activity2.findViewById(R.id.answerTextView);
-    Button yes = activity2.findViewById(R.id.yesButton);
-    Button no = activity2.findViewById(R.id.noButton);
-    String sure =activity2.getResources().getString(R.string.warning_message);
-    String empty_answer=activity2.getResources().getString(R.string.empty_answer);
-    */
+    controller2.create().resume().visible().get();
+    updateResources2();
     assertThat(warning.getText().toString(), equalTo(sure));
     assertThat(answer.getText().toString(), equalTo(empty_answer));
     assertThat(yes.isEnabled(), equalTo(true));
@@ -645,7 +580,7 @@ public class QuizUnitTests {
     //  del cuestionario existente antes de iniciar pantalla Cheat
     //  mostraremos botones Next y Cheat activados
     //  mostraremos botón Option desactivado
-    resources1();
+    updateResources1();
     assertThat(question.getText().toString(), equalTo(quiz[0]));
     assertThat(reply.getText().toString(), equalTo(incorrect));
     assertThat(option1.isEnabled(), equalTo(false));
@@ -665,17 +600,8 @@ public class QuizUnitTests {
     //  a  pregunta del cuestionario en pantalla Question
     //  mostraremos botones Yes y NO activados
     cheat.performClick();
-    controller2.create().resume().get();
-    resources2();
-    /*
-    CheatActivity activity2 = controller2.create().resume().get();
-    TextView warning = activity2.findViewById(R.id.warningTextView);
-    TextView answer = activity2.findViewById(R.id.answerTextView);
-    Button yes = activity2.findViewById(R.id.yesButton);
-    Button no = activity2.findViewById(R.id.noButton);
-    String sure =activity2.getResources().getString(R.string.warning_message);
-    String empty_answer=activity2.getResources().getString(R.string.empty_answer);
-    */
+    controller2.create().resume().visible().get();
+    updateResources2();
     assertThat(warning.getText().toString(), equalTo(sure));
     assertThat(answer.getText().toString(), equalTo(empty_answer));
     assertThat(yes.isEnabled(), equalTo(true));
@@ -689,7 +615,7 @@ public class QuizUnitTests {
     //  visualizaremos respuesta correcta a pregunta
     //  del cuestionario mostrada actualmente en pantalla Question
     //  mostraremos botones Yes y NO desactivados
-    resources1();
+    updateResources1();
     assertThat(warning.getText().toString(), equalTo(sure));
     assertThat(answer.getText().toString(), equalTo(quiz[3]));
     assertThat(yes.isEnabled(), equalTo(false));
@@ -706,17 +632,8 @@ public class QuizUnitTests {
     //  a  pregunta del cuestionario en pantalla Question
     //  mostraremos botones Yes y NO activados
     cheat.performClick();
-    controller2.create().resume().get();
-    resources2();
-    /*
-    CheatActivity activity2 = controller2.create().resume().get();
-    TextView warning = activity2.findViewById(R.id.warningTextView);
-    TextView answer = activity2.findViewById(R.id.answerTextView);
-    Button yes = activity2.findViewById(R.id.yesButton);
-    Button no = activity2.findViewById(R.id.noButton);
-    String sure =activity2.getResources().getString(R.string.warning_message);
-    String empty_answer=activity2.getResources().getString(R.string.empty_answer);
-    */
+    controller2.create().resume().visible().get();
+    updateResources2();
     assertThat(warning.getText().toString(), equalTo(sure));
     assertThat(answer.getText().toString(), equalTo(empty_answer));
     assertThat(yes.isEnabled(), equalTo(true));
@@ -732,8 +649,8 @@ public class QuizUnitTests {
     //  visualizaremos respuesta correcta a pregunta
     //  del cuestionario mostrada actualmente en pantalla Question
     //  mostraremos botones Yes y NO desactivados
-    resources1();
-    resources2();
+    updateResources1();
+    updateResources2();
     assertThat(warning.getText().toString(), equalTo(sure));
     assertThat(answer.getText().toString(), equalTo(quiz[3]));
     assertThat(yes.isEnabled(), equalTo(false));
@@ -751,17 +668,8 @@ public class QuizUnitTests {
     //  mostraremos botones Yes y NO activados
     option2.performClick();
     cheat.performClick();
-    controller2.create().resume().get();
-    resources2();
-    /*
-    CheatActivity activity2 = controller2.create().resume().get();
-    TextView warning = activity2.findViewById(R.id.warningTextView);
-    TextView answer = activity2.findViewById(R.id.answerTextView);
-    Button yes = activity2.findViewById(R.id.yesButton);
-    Button no = activity2.findViewById(R.id.noButton);
-    String sure =activity2.getResources().getString(R.string.warning_message);
-    String empty_answer=activity2.getResources().getString(R.string.empty_answer);
-    */
+    controller2.create().resume().visible().get();
+    updateResources2();
     assertThat(warning.getText().toString(), equalTo(sure));
     assertThat(answer.getText().toString(), equalTo(empty_answer));
     assertThat(yes.isEnabled(), equalTo(true));
@@ -794,17 +702,8 @@ public class QuizUnitTests {
     //  mostraremos botones Yes y NO activados
     option2.performClick();
     cheat.performClick();
-    controller2.create().resume().get();
-    resources2();
-    /*
-    CheatActivity activity2 = controller2.create().resume().get();
-    TextView warning = activity2.findViewById(R.id.warningTextView);
-    TextView answer = activity2.findViewById(R.id.answerTextView);
-    Button yes = activity2.findViewById(R.id.yesButton);
-    Button no = activity2.findViewById(R.id.noButton);
-    String sure =activity2.getResources().getString(R.string.warning_message);
-    String empty_answer=activity2.getResources().getString(R.string.empty_answer);
-    */
+    controller2.create().resume().visible().get();
+    updateResources2();
     assertThat(warning.getText().toString(), equalTo(sure));
     assertThat(answer.getText().toString(), equalTo(empty_answer));
     assertThat(yes.isEnabled(), equalTo(true));
@@ -821,7 +720,7 @@ public class QuizUnitTests {
     //  visualizaremos respuesta correcta a pregunta
     //  del cuestionario mostrada actualmente en pantalla Question
     //  mostraremos botones Yes y NO desactivados
-    resources1();
+    updateResources1();
     assertThat(warning.getText().toString(), equalTo(sure));
     assertThat(answer.getText().toString(), equalTo(quiz[3]));
     assertThat(yes.isEnabled(), equalTo(false));
@@ -837,17 +736,8 @@ public class QuizUnitTests {
     //  a  pregunta del cuestionario en pantalla Question
     //  mostraremos botones Yes y NO activados
     cheat.performClick();
-    controller2.create().resume().get();
-    resources2();
-    /*
-    CheatActivity activity2 = controller2.create().resume().get();
-    TextView warning = activity2.findViewById(R.id.warningTextView);
-    TextView answer = activity2.findViewById(R.id.answerTextView);
-    Button yes = activity2.findViewById(R.id.yesButton);
-    Button no = activity2.findViewById(R.id.noButton);
-    String sure =activity2.getResources().getString(R.string.warning_message);
-    String empty_answer=activity2.getResources().getString(R.string.empty_answer);
-    */
+    controller2.create().resume().visible().get();
+    updateResources2();
     assertThat(warning.getText().toString(), equalTo(sure));
     assertThat(answer.getText().toString(), equalTo(empty_answer));
     assertThat(yes.isEnabled(), equalTo(true));
@@ -885,17 +775,8 @@ public class QuizUnitTests {
     //  a  pregunta del cuestionario en pantalla Question
     //  mostraremos botones Yes y NO activados
     cheat.performClick();
-    controller2.create().resume().get();
-    resources2();
-    /*
-    CheatActivity activity2 = controller2.create().resume().get();
-    TextView warning = activity2.findViewById(R.id.warningTextView);
-    TextView answer = activity2.findViewById(R.id.answerTextView);
-    Button yes = activity2.findViewById(R.id.yesButton);
-    Button no = activity2.findViewById(R.id.noButton);
-    String sure =activity2.getResources().getString(R.string.warning_message);
-    String empty_answer=activity2.getResources().getString(R.string.empty_answer);
-    */
+    controller2.create().resume().visible().get();
+    updateResources2();
     assertThat(warning.getText().toString(), equalTo(sure));
     assertThat(answer.getText().toString(), equalTo(empty_answer));
     assertThat(yes.isEnabled(), equalTo(true));
@@ -914,7 +795,7 @@ public class QuizUnitTests {
     //  pregunta siguiente del cuestionario antes de iniciar pantalla Cheat
     //  mostraremos botones Option y Cheat activados
     //  mostraremos botón Next desactivado
-    resources1();
+    updateResources1();
     assertThat(question.getText().toString(), equalTo(quiz[5]));
     assertThat(reply.getText().toString(), equalTo(empty_reply));
     assertThat(option1.isEnabled(), equalTo(true));
@@ -934,17 +815,8 @@ public class QuizUnitTests {
     //  mostraremos botones Yes y NO activados
     option2.performClick();
     cheat.performClick();
-    controller2.create().resume().get();
-    resources2();
-    /*
-    CheatActivity activity2 = controller2.create().resume().get();
-    TextView warning = activity2.findViewById(R.id.warningTextView);
-    TextView answer = activity2.findViewById(R.id.answerTextView);
-    Button yes = activity2.findViewById(R.id.yesButton);
-    Button no = activity2.findViewById(R.id.noButton);
-    String sure =activity2.getResources().getString(R.string.warning_message);
-    String empty_answer=activity2.getResources().getString(R.string.empty_answer);
-    */
+    controller2.create().resume().visible().get();
+    updateResources2();
     assertThat(warning.getText().toString(), equalTo(sure));
     assertThat(answer.getText().toString(), equalTo(empty_answer));
     assertThat(yes.isEnabled(), equalTo(true));
@@ -1036,7 +908,7 @@ public class QuizUnitTests {
     //  THEN 
     //  mostraremos mensaje Correct segun la respuesta del usuario
     //  mostraremos botones Option, Next y Cheat desactivados
-    resources1();
+    updateResources1();
     assertThat(question.getText().toString(), equalTo(quiz[5]));
     assertThat(reply.getText().toString(), equalTo(correct));
     assertThat(option1.isEnabled(), equalTo(false));
@@ -1132,7 +1004,7 @@ public class QuizUnitTests {
     //  THEN 
     //  mostraremos mensaje Correct segun la respuesta del usuario
     //  mostraremos botones Option, Next y Cheat desactivados
-    resources1();
+    updateResources1();
     assertThat(question.getText().toString(), equalTo(quiz[35]));
     assertThat(reply.getText().toString(), equalTo(correct));
     assertThat(option1.isEnabled(), equalTo(false));
@@ -1235,7 +1107,7 @@ public class QuizUnitTests {
     //  THEN 
     //  mostraremos mensaje Correct segun la respuesta del usuario
     //  mostraremos botones Option, Next y Cheat desactivados
-    resources1();
+    updateResources1();
     assertThat(question.getText().toString(), equalTo(quiz[45]));
     assertThat(reply.getText().toString(), equalTo(correct));
     assertThat(option1.isEnabled(), equalTo(false));
@@ -1322,17 +1194,8 @@ public class QuizUnitTests {
     option2.performClick();
     next.performClick();
     cheat.performClick();
-    controller2.create().resume().get();
-    resources2();
-    /*
-    CheatActivity activity2 = controller2.create().resume().get();
-    TextView warning = activity2.findViewById(R.id.warningTextView);
-    TextView answer = activity2.findViewById(R.id.answerTextView);
-    Button yes = activity2.findViewById(R.id.yesButton);
-    Button no = activity2.findViewById(R.id.noButton);
-    String sure =activity2.getResources().getString(R.string.warning_message);
-    String empty_answer=activity2.getResources().getString(R.string.empty_answer);
-    */
+    controller2.create().resume().visible().get();
+    updateResources2();
     assertThat(warning.getText().toString(), equalTo(sure));
     assertThat(answer.getText().toString(), equalTo(empty_answer));
     assertThat(yes.isEnabled(), equalTo(true));
@@ -1386,17 +1249,8 @@ public class QuizUnitTests {
     option2.performClick();
     next.performClick();
     cheat.performClick();
-    controller2.create().resume().get();
-    resources2();
-    /*
-    CheatActivity activity2 = controller2.create().resume().get();
-    TextView warning = activity2.findViewById(R.id.warningTextView);
-    TextView answer = activity2.findViewById(R.id.answerTextView);
-    Button yes = activity2.findViewById(R.id.yesButton);
-    Button no = activity2.findViewById(R.id.noButton);
-    String sure =activity2.getResources().getString(R.string.warning_message);
-    String empty_answer=activity2.getResources().getString(R.string.empty_answer);
-    */
+    controller2.create().resume().visible().get();
+    updateResources2();
     assertThat(warning.getText().toString(), equalTo(sure));
     assertThat(answer.getText().toString(), equalTo(empty_answer));
     assertThat(yes.isEnabled(), equalTo(true));
@@ -1415,7 +1269,7 @@ public class QuizUnitTests {
     //  del cuestionario existente antes de iniciar pantalla Cheat
     //  mostraremos botón Cheat activado
     //  mostraremos botones Option y Next desactivados
-    resources1();
+    updateResources1();
     assertThat(question.getText().toString(), equalTo(quiz[45]));
     assertThat(reply.getText().toString(), equalTo(empty_reply));
     assertThat(option1.isEnabled(), equalTo(false));
@@ -1453,17 +1307,8 @@ public class QuizUnitTests {
     next.performClick();
     option2.performClick();
     cheat.performClick();
-    controller2.create().resume().get();
-    resources2();
-    /*
-    CheatActivity activity2 = controller2.create().resume().get();
-    TextView warning = activity2.findViewById(R.id.warningTextView);
-    TextView answer = activity2.findViewById(R.id.answerTextView);
-    Button yes = activity2.findViewById(R.id.yesButton);
-    Button no = activity2.findViewById(R.id.noButton);
-    String sure =activity2.getResources().getString(R.string.warning_message);
-    String empty_answer=activity2.getResources().getString(R.string.empty_answer);
-    */
+    controller2.create().resume().visible().get();
+    updateResources2();
     assertThat(warning.getText().toString(), equalTo(sure));
     assertThat(answer.getText().toString(), equalTo(empty_answer));
     assertThat(yes.isEnabled(), equalTo(true));
