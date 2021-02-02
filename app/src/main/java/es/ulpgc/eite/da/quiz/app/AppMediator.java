@@ -1,11 +1,9 @@
 package es.ulpgc.eite.da.quiz.app;
 
-import android.app.Application;
-
 import es.ulpgc.eite.da.quiz.cheat.CheatState;
 import es.ulpgc.eite.da.quiz.question.QuestionState;
 
-public class AppMediator extends Application {
+public class AppMediator {
 
   // state question screen
   private QuestionState questionState;
@@ -17,12 +15,24 @@ public class AppMediator extends Application {
   // state from cheat screen to question screen
   private CheatToQuestionState cheatToQuestionState;
 
-  @Override
-  public void onCreate() {
-    super.onCreate();
 
+  private static AppMediator INSTANCE;
+
+  private AppMediator() {
     questionState = new QuestionState();
     cheatState = new CheatState();
+  }
+
+  public static AppMediator getInstance() {
+    if(INSTANCE == null) {
+      INSTANCE = new AppMediator();
+    }
+
+    return INSTANCE;
+  }
+
+  public static void resetInstance() {
+    INSTANCE = null;
   }
 
   public CheatState getCheatState() {
