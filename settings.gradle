@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name='Quiz-TDD'
+rootProject.name='AdvQuiz-CleanCode-Starter'
