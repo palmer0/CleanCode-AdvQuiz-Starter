@@ -16,11 +16,6 @@ public class QuestionPresenter implements QuestionContract.Presenter {
   private WeakReference<QuestionContract.View> view;
   private QuestionState state;
   private QuestionContract.Model model;
-  //private QuestionContract.Router router;
-
-  public QuestionPresenter(QuestionState state) {
-    this.state = state;
-  }
 
   public QuestionPresenter(AppMediator mediator) {
     this.mediator = mediator;
@@ -65,7 +60,6 @@ public class QuestionPresenter implements QuestionContract.Presenter {
 
     // use passed state if is necessary
     CheatToQuestionState savedState = getStateFromCheatScreen();
-    //CheatToQuestionState savedState = router.getStateFromCheatScreen();
     if (savedState != null) {
 
       // fetch the model
@@ -148,10 +142,4 @@ public class QuestionPresenter implements QuestionContract.Presenter {
     this.model = model;
   }
 
-  /*
-  @Override
-  public void injectRouter(QuestionContract.Router router) {
-    this.router = router;
-  }
-  */
 }

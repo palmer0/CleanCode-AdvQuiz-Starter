@@ -17,7 +17,6 @@ public interface QuestionContract {
   interface Presenter {
     void injectView(WeakReference<View> view);
     void injectModel(Model model);
-    //void injectRouter(Router router);
 
     void onResume();
     void onStart();
@@ -41,10 +40,4 @@ public interface QuestionContract {
     int getQuizIndex();
   }
 
-  /*
-  interface Router {
-    void passStateToCheatScreen(QuestionToCheatState state);
-    CheatToQuestionState getStateFromCheatScreen();
-  }
-  */
 }

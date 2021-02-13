@@ -16,7 +16,6 @@ public class CheatPresenter implements CheatContract.Presenter {
   private WeakReference<CheatContract.View> view;
   private CheatState state;
   private CheatContract.Model model;
-  //private CheatContract.Router router;
 
   public CheatPresenter(CheatState state) {
     this.state = state;
@@ -56,7 +55,6 @@ public class CheatPresenter implements CheatContract.Presenter {
 
     // use passed state if is necessary
     QuestionToCheatState savedState = getStateFromQuestionScreen();
-    //QuestionToCheatState savedState = router.getStateFromQuestionScreen();
     if (savedState != null) {
 
       // fetch the model
@@ -113,12 +111,5 @@ public class CheatPresenter implements CheatContract.Presenter {
   public void injectModel(CheatContract.Model model) {
     this.model = model;
   }
-
-  /*
-  @Override
-  public void injectRouter(CheatContract.Router router) {
-    this.router = router;
-  }
-  */
 
 }

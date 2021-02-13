@@ -15,17 +15,13 @@ public class QuestionScreen {
         new WeakReference<>((FragmentActivity) view);
 
     AppMediator mediator = AppMediator.getInstance();
-    //QuestionState state = mediator.getQuestionState();
 
     String[] quiz = context.get()
         .getResources().getStringArray(R.array.quiz_array);
 
-    //QuestionContract.Router router = new QuestionRouter(mediator);
-    //QuestionContract.Presenter presenter = new QuestionPresenter(state);
     QuestionContract.Presenter presenter = new QuestionPresenter(mediator);
     QuestionContract.Model model = new QuestionModel(quiz);
     presenter.injectModel(model);
-    //presenter.injectRouter(router);
     presenter.injectView(new WeakReference<>(view));
 
     view.injectPresenter(presenter);
