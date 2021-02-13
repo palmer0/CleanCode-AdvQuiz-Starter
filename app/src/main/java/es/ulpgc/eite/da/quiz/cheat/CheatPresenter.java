@@ -4,19 +4,27 @@ import android.util.Log;
 
 import java.lang.ref.WeakReference;
 
+import es.ulpgc.eite.da.quiz.app.AppMediator;
+import es.ulpgc.eite.da.quiz.app.CheatToQuestionState;
 import es.ulpgc.eite.da.quiz.app.QuestionToCheatState;
 
 public class CheatPresenter implements CheatContract.Presenter {
 
   public static String TAG = CheatPresenter.class.getSimpleName();
 
+  private AppMediator mediator;
   private WeakReference<CheatContract.View> view;
   private CheatState state;
   private CheatContract.Model model;
-  private CheatContract.Router router;
+  //private CheatContract.Router router;
 
   public CheatPresenter(CheatState state) {
     this.state = state;
+  }
+
+  public CheatPresenter(AppMediator mediator) {
+    this.mediator = mediator;
+    state = mediator.getCheatState();
   }
 
 
@@ -47,7 +55,8 @@ public class CheatPresenter implements CheatContract.Presenter {
     //TODO: falta implementacion
 
     // use passed state if is necessary
-    QuestionToCheatState savedState = router.getStateFromQuestionScreen();
+    QuestionToCheatState savedState = getStateFromQuestionScreen();
+    //QuestionToCheatState savedState = router.getStateFromQuestionScreen();
     if (savedState != null) {
 
       // fetch the model
@@ -83,6 +92,17 @@ public class CheatPresenter implements CheatContract.Presenter {
 
   }
 
+  private void passStateToQuestionScreen(CheatToQuestionState state) {
+
+    //TODO: falta implementacion
+  }
+
+  private QuestionToCheatState getStateFromQuestionScreen() {
+
+    //TODO: falta implementacion
+
+    return null;
+  }
 
   @Override
   public void injectView(WeakReference<CheatContract.View> view) {
@@ -94,8 +114,11 @@ public class CheatPresenter implements CheatContract.Presenter {
     this.model = model;
   }
 
+  /*
   @Override
   public void injectRouter(CheatContract.Router router) {
     this.router = router;
   }
+  */
+
 }

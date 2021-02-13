@@ -4,19 +4,27 @@ import android.util.Log;
 
 import java.lang.ref.WeakReference;
 
+import es.ulpgc.eite.da.quiz.app.AppMediator;
 import es.ulpgc.eite.da.quiz.app.CheatToQuestionState;
+import es.ulpgc.eite.da.quiz.app.QuestionToCheatState;
 
 public class QuestionPresenter implements QuestionContract.Presenter {
 
   public static String TAG = QuestionPresenter.class.getSimpleName();
 
+  private AppMediator mediator;
   private WeakReference<QuestionContract.View> view;
   private QuestionState state;
   private QuestionContract.Model model;
-  private QuestionContract.Router router;
+  //private QuestionContract.Router router;
 
   public QuestionPresenter(QuestionState state) {
     this.state = state;
+  }
+
+  public QuestionPresenter(AppMediator mediator) {
+    this.mediator = mediator;
+    state = mediator.getQuestionState();
   }
 
   @Override
@@ -56,7 +64,8 @@ public class QuestionPresenter implements QuestionContract.Presenter {
     //TODO: falta implementacion
 
     // use passed state if is necessary
-    CheatToQuestionState savedState = router.getStateFromCheatScreen();
+    CheatToQuestionState savedState = getStateFromCheatScreen();
+    //CheatToQuestionState savedState = router.getStateFromCheatScreen();
     if (savedState != null) {
 
       // fetch the model
@@ -101,6 +110,18 @@ public class QuestionPresenter implements QuestionContract.Presenter {
     //TODO: falta implementacion
   }
 
+  private void passStateToCheatScreen(QuestionToCheatState state) {
+
+    //TODO: falta implementacion
+
+  }
+
+  private CheatToQuestionState getStateFromCheatScreen() {
+
+    //TODO: falta implementacion
+
+    return null;
+  }
 
   private void disableNextButton() {
     state.optionEnabled=true;
@@ -127,8 +148,10 @@ public class QuestionPresenter implements QuestionContract.Presenter {
     this.model = model;
   }
 
+  /*
   @Override
   public void injectRouter(QuestionContract.Router router) {
     this.router = router;
   }
+  */
 }
