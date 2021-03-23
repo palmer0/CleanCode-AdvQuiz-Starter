@@ -2,19 +2,23 @@ package es.ulpgc.eite.da.quiz;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.content.res.Configuration;
+import android.os.RemoteException;
 
-import androidx.test.core.app.ApplicationProvider;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.rule.ActivityTestRule;
+import androidx.test.uiautomator.UiDevice;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import es.ulpgc.eite.da.quiz.app.AppMediator;
 import es.ulpgc.eite.da.quiz.question.QuestionActivity;
 
 import static androidx.test.espresso.Espresso.onView;
@@ -24,16 +28,25 @@ import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isEnabled;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
 import static org.hamcrest.Matchers.not;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
 public class QuizInstrumentedTests {
 
-  @Rule
-  public ActivityTestRule<QuestionActivity> activityTestRule =
-      new ActivityTestRule(QuestionActivity.class );
 
+  @Rule
+  public ActivityTestRule<QuestionActivity> testRule =
+      new ActivityTestRule(QuestionActivity.class, true, false);
+
+  /*
+  @Rule
+  public ActivityTestRule<QuestionActivity> testRule =
+      new ActivityTestRule(QuestionActivity.class );
+  */
+
+  private Activity activity;
 
   Context context =
       InstrumentationRegistry.getInstrumentation().getTargetContext();
@@ -45,11 +58,44 @@ public class QuizInstrumentedTests {
   String warning = context.getString(R.string.warning_message);
   String empty_answer = context.getString(R.string.empty_answer);
 
+
+  @Before
+  public void setUp() {
+
+    AppMediator.resetInstance();
+
+    try {
+
+      UiDevice device = UiDevice.getInstance(getInstrumentation());
+      device.setOrientationNatural();
+
+    } catch (RemoteException e) {
+    }
+
+    testRule.launchActivity(new Intent());
+    activity = testRule.getActivity();
+  }
+
+  @After
+  public void tearDown() {
+
+    try {
+
+      UiDevice device = UiDevice.getInstance(getInstrumentation());
+      device.setOrientationNatural();
+
+    } catch (RemoteException e) {
+    }
+
+    testRule.finishActivity();
+  }
+
+  /*
   private void rotate() {
 
     Context context = ApplicationProvider.getApplicationContext();
     int orientation = context.getResources().getConfiguration().orientation;
-    Activity activity = activityTestRule.getActivity();
+    Activity activity = testRule.getActivity();
 
     if(orientation  == Configuration.ORIENTATION_PORTRAIT) {
       activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
@@ -57,7 +103,43 @@ public class QuizInstrumentedTests {
       activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
   }
+  */
 
+  private void rotate() {
+
+    int orientation = activity.getRequestedOrientation();
+
+    if(orientation == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
+      orientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
+
+    } else {
+      orientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE;
+    }
+
+    activity.setRequestedOrientation(orientation);
+
+    try {
+
+      UiDevice device = UiDevice.getInstance(getInstrumentation());
+
+      if(orientation == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
+        device.setOrientationNatural();
+
+      } else {
+        device.setOrientationLeft();
+      }
+
+    } catch (RemoteException e) {
+    }
+
+    /*
+    try {
+      Thread.sleep(100);
+    } catch (InterruptedException e) {
+
+    }
+    */
+  }
 
   @Test
   public void question1WithRotation() {
